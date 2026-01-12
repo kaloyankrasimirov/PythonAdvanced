@@ -1,7 +1,6 @@
 names = set()
 
 for _ in range(int(input())):
-    name = input()
-    names.add(name)
+    names.add(input())
 
 print(*names, sep="\n")
