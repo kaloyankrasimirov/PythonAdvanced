@@ -105,7 +105,7 @@ def handle_column_click(ma, labels, column_num, player_num, counter, rows, cols,
         update_ui(labels, row, column_num, player_num)
 
         if is_winner(ma, row, column_num, player_num, slots):
-            messagebox.showinfo("Game Over!", f"The winner is {player_num}")
+            messagebox.showinfo("Game Over!", f"The winner is Player {player_num}")
             reset_game(ma, labels)
             return 1,0
 
