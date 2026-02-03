@@ -14,18 +14,16 @@ pin, balance, age = [int(x) for x in input().split(", ")]
 
 
 while True:
-    command = input()
+    command = input().split("#")
 
-    if command == "End":
+    if command[0] == "End":
         break
 
-    parts = command.split("#")
-
-    action = parts[0]
+    action = command[0]
 
     if action == "Send Money":
-        money = int(parts[1])
-        current_pin = int(parts[2])
+        money = int(command[1])
+        current_pin = int(command[2])
 
         if balance < int(money):
             raise MoneyNotEnoughError("Insufficient funds for the requested transaction")
@@ -34,18 +32,18 @@ while True:
         elif age < 18:
             raise UnderageTransactionError("You must be 18 years or older to perform online transactions")
 
-        balance -= int(parts[1])
+        balance -= int(command[1])
         print(f"Successfully sent {money:.2f} to a friend""\n"
-              f'There is {balance - money:.2f} money left in the account')
+              f'There is {balance:.2f} money left in the account')
 
 
 
     if action == "Receive Money":
-        money = int(parts[1])
+        money = int(command[1])
         if int(money) < 0:
             raise MoneyIsNegativeError("The amount of money cannot be a negative number")
 
-        balance += int(parts[1]) / 2
+        balance += int(command[1]) / 2
 
         print(f"{(money / 2):.2f} money went straight into the bank account")
 
