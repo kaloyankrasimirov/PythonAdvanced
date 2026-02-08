@@ -21,8 +21,9 @@ while True:
                 f.write(content.replace(args[0], args[1]))
         except FileNotFoundError:
             print("An error occurred")
-    elif command == "Delete":
+    elif action == "Delete":
         if os.path.exists(file_name):
             os.remove(file_name)
         else:
             print("An error occurred")
+

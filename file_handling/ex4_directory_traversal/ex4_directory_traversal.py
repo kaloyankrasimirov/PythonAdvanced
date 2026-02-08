@@ -4,7 +4,7 @@ files = {}
 directory = "../"
 
 def get_files(folder, level=1):
-    if level == -1:
+    if level <0:
         return
     for element in os.listdir(folder):
         f = os.path.join(folder, element)
@@ -15,7 +15,7 @@ def get_files(folder, level=1):
             files[extension].append(element)
         else:
             get_files(f, level-1)
-get_files(directory, level=-2)
+get_files(directory, level=1)
 
 with open(os.path.join(directory, "report.txt"), "w") as output_file:
     for ext, file_names in sorted(files.items()):
